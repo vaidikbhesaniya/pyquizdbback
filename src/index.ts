@@ -51,7 +51,7 @@ app.post("/api/v1/user", async (req: Request, res: Response) => {
         });
 
         res.cookie("id", newuser.id, {
-            sameSite: "none",
+            sameSite: "strict",
             secure: true,
         });
 
