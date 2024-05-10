@@ -2,6 +2,7 @@ import express from "express";
 import { Response, Request } from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import prisma from "./db/db";
 const app = express();
 
 app.use(express.json());
