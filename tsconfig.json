@@ -6,7 +6,7 @@
 
     "module": "commonjs",   
     "rootDir": "./src",                                  
-    "outDir": "./public",                                 
+    "outDir": "./dist",                                 
     
     "esModuleInterop": true,                          
     // "preserveSymlinks": true,                      
