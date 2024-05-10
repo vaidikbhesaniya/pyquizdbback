@@ -31,8 +31,6 @@ function getQuestionField(questionId: string) {
 app.post("/api/v1/user", async (req: Request, res: Response) => {
     const { email, userName } = req.body;
 
-    console.log(req.body);
-
     try {
         const user = await prisma.data.findUnique({
             where: {
@@ -40,13 +38,14 @@ app.post("/api/v1/user", async (req: Request, res: Response) => {
             },
         });
         if (user) {
-            return res.status(404).json({ message: "User Already Exists" });
+            return res.status(404).json({ message: user.issubmitted });
         }
 
         const newuser = await prisma.data.create({
             data: {
                 email,
                 userName,
+                issubmitted: false,
             },
         });
 
@@ -75,6 +74,7 @@ app.post("/api/v1/:questionId", async (req: Request, res: Response) => {
             },
             data: {
                 [getQuestionField(questionId)]: code,
+                issubmitted: false,
             },
         });
 
