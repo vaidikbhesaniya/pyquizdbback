@@ -50,7 +50,10 @@ app.post("/api/v1/user", async (req: Request, res: Response) => {
             },
         });
 
-        res.cookie("id", newuser.id);
+        res.cookie("id", newuser.id, {
+            sameSite: "none",
+            secure: true,
+        });
 
         res.status(201).json({ message: "User Created Successfully" });
     } catch (error) {
